@@ -1,0 +1,4 @@
+{filename, <<"test.rss">>}.
+{filters, [
+    "teststring"
+]}.
