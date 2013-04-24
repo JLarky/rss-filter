@@ -1,0 +1,4 @@
+$ cp priv/app.cfg.sample priv/app.cfg
+$ make depends
+$ make console
+$ open http://localhost:1234 in rss reader/browser
