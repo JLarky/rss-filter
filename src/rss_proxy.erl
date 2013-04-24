@@ -14,8 +14,12 @@ init({tcp, http}, Req, _Opts) ->
 handle(Req, State) ->
     {ok, Cfg} = file:consult(<<"priv/app.cfg">>),
     Filters = proplists:get_value(filters, Cfg),
-    {ok, Bin} = file:read_file(proplists:get_value(filename, Cfg)),
-    {Rss, ""} = xmerl_scan:string(binary_to_list(Bin)),
+    Url = proplists:get_value(url, Cfg),
+    case httpc:request(get, {Url, []}, [], []) of
+        {ok, {{_, 200, _}, _Headers, Body}} ->
+            ok
+    end,
+    {Rss, ""} = xmerl_scan:string(xmerl_ucs:to_utf8(Body)),
     A = lists:nth(3, Rss#xmlElement.content),
     % d(element(1, A)),
     d(lists:sublist(A#xmlElement.content, 19)),

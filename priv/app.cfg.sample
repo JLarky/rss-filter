@@ -1,4 +1,4 @@
-{filename, <<"test.rss">>}.
+{url, "http://feeds.feedburner.com/blogspot/MKuf"}.
 {filters, [
-    "teststring"
+    "Google"
 ]}.

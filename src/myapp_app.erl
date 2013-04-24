@@ -16,6 +16,9 @@ dev() ->
      || App <- [crypto,
                 ranch,
                 cowboy,
+                inets,
+                public_key,
+                ssl,
                 myapp]],
     ok.
 
